@@ -6,6 +6,8 @@
 
 *The job search that runs on your machine.*
 
+> **Personal copy.** This is Jason's working copy of [MadsLorentzen/ai-job-search](https://github.com/MadsLorentzen/ai-job-search), imported for personal job-search use per the upstream project's own recommendation ([SETUP.md §8](SETUP.md#8-pulling-upstream-updates-into-your-fork)) rather than as a public GitHub fork. Licensed MIT; upstream attribution preserved below.
+
 <p align="center">
   <a href="https://trendshift.io/repositories/43622?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-43622" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/43622/daily" alt="MadsLorentzen%2Fai-job-search | Trendshift" width="250" height="55"/></a>
 </p>
