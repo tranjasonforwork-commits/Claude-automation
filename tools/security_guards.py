@@ -38,6 +38,10 @@ errors: list[str] = []
 # an entry must add it here too - that is the point: the diff shows both.
 ALLOWED_PERMISSIONS = {
     "Skill(job-application-assistant)",
+    # Design standards applied to every visual/front-end request. Pre-approved
+    # because the paired UserPromptSubmit hook below declares it mandatory, so
+    # prompting for it on every design task would only be noise.
+    "Skill(ui-ux-design)",
     # Narrowed from the upstream template's blanket Bash(bun run:*), which
     # pre-approved `bun run <any file>`. One entry per shipped portal CLI,
     # matching what each SKILL.md already declares in its allowed-tools.
@@ -130,6 +134,20 @@ ALLOWED_IGNORE_NEGATIONS = {
 # executed on session start:
 # https://research.jfrog.com/post/shai-hulud-is-back-august/
 ALLOWED_HOOKS: set[str] = set()
+
+# Reviewed additions, kept as a separate statement so the empty-set literal above
+# stays intact for the tests that rewrite it.
+#
+# ui-ux-design-guard.sh is a UserPromptSubmit hook. It reads the prompt from the
+# hook payload on stdin and, when the prompt matches a fixed grep pattern for
+# design/front-end work, prints a constant block of text asking Claude to apply
+# .claude/skills/ui-ux-design/SKILL.md. It writes nothing, opens no file, makes no
+# network call, and never interpolates the prompt into a command - the prompt is
+# only ever matched against that fixed pattern. Its worst case is unwanted text in
+# the context window.
+ALLOWED_HOOKS |= {
+    "UserPromptSubmit:bash .claude/hooks/ui-ux-design-guard.sh",
+}
 
 FORBIDDEN_SCRIPTS = {"preinstall", "install", "postinstall", "prepare", "prepack"}
 

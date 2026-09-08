@@ -1,6 +1,7 @@
 {
   "permissions": {
     "allow": [
+      "Skill(ui-ux-design)",
       "Skill(job-application-assistant)",
       "Bash(bun run .agents/skills/jobbank-search/cli/src/cli.ts:*)",
       "Bash(bun run .agents/skills/jobdanmark-search/cli/src/cli.ts:*)",
@@ -13,6 +14,18 @@
       "Bash(python tools/verify_pdf.py:*)",
       "Bash(python3 tools/verify_pdf.py:*)",
       "Bash(pdftotext:*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/ui-ux-design-guard.sh"
+          }
+        ]
+      }
     ]
   }
 }
