@@ -39,9 +39,16 @@ errors: list[str] = []
 ALLOWED_PERMISSIONS = {
     "Skill(job-application-assistant)",
     # Design standards applied to every visual/front-end request. Pre-approved
-    # because the paired UserPromptSubmit hook below declares it mandatory, so
-    # prompting for it on every design task would only be noise.
+    # because the paired UserPromptSubmit hook below declares them mandatory, so
+    # prompting on every design task would only be noise. ui-ux-design holds this
+    # repo's house rules; ui-ux-pro-max is vendored from
+    # nextlevelbuilder/ui-ux-pro-max-skill (MIT) and its search.py is a read-only
+    # query over CSV/JSON data files shipped inside the skill - no network, no
+    # writes, no shell-out.
     "Skill(ui-ux-design)",
+    "Skill(ui-ux-pro-max)",
+    "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py:*)",
+    "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py:*)",
     # Narrowed from the upstream template's blanket Bash(bun run:*), which
     # pre-approved `bun run <any file>`. One entry per shipped portal CLI,
     # matching what each SKILL.md already declares in its allowed-tools.

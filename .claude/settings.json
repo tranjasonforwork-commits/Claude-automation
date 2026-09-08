@@ -2,6 +2,9 @@
   "permissions": {
     "allow": [
       "Skill(ui-ux-design)",
+      "Skill(ui-ux-pro-max)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py:*)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py:*)",
       "Skill(job-application-assistant)",
       "Bash(bun run .agents/skills/jobbank-search/cli/src/cli.ts:*)",
       "Bash(bun run .agents/skills/jobdanmark-search/cli/src/cli.ts:*)",
